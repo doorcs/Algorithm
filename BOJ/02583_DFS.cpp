@@ -5,13 +5,13 @@ int M, N, K; // 100 이하의 자연수
 
 int ans, cnt;
 
-int arr[104][104];
+int arr[104][104]; // 이 문제에서는 visited 배열이 없어도 된다!
 
 int dy[] = {1, -1, 0, 0};
 int dx[] = {0, 0, 1, -1};
 
 void dfs(int y, int x){
-    if(arr[y][x]) return; // base case?
+    if(arr[y][x]) return; // base case??
     cnt++; // 새로 호출됐다면 cnt++
     arr[y][x] = 1;
 
