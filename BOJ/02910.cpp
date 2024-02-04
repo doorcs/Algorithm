@@ -23,7 +23,7 @@ int main() {
         else mp[tmp]++;
     }
 
-    sort(v.begin(), v.end(), [&mp, &ord](int a, int b){ // `mp`, `ord` 두 map을 reference로 캡쳐
+    sort(v.begin(), v.end(), [&mp, &ord](int a, int b){ // `mp`, `ord` 두 map만 reference로 캡처
         if(mp[a] == mp[b]) return ord[a] < ord[b];
         return mp[a] > mp[b];
         });
