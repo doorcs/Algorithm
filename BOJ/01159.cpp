@@ -22,7 +22,7 @@ int main() {
     for(const auto& [key, val]: mp){
         if(val >= 5){
             res += key;
-            flag = 1; // 여러번 실행되도 상관X
+            flag = 1; // 여러번 실행돼도 상관X
         }
     }
 
