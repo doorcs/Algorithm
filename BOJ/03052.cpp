@@ -1,3 +1,4 @@
+// 처음 작성한 코드:
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -16,3 +17,20 @@ int main() {
     
     cout << res.size();
 }
+
+// // std::set을 활용한 코드:
+// #include <iostream>
+// #include <set>
+// using namespace std;
+
+// int main() {
+//     cin.tie(nullptr)->ios_base::sync_with_stdio(false);
+
+//     set<int> s;
+//     int tmp;
+//     for(int i=0; i<10; i++){
+//         cin >> tmp;
+//         s.insert(tmp%42);
+//     }
+//     cout << s.size();
+// }
