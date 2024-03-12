@@ -16,12 +16,13 @@
     - int nx = x + dx[i];
   - }
 - 앞, 뒤: fr, rr
-- 출발지: src, beg, org, orig
+- 출발지: src, beg,org, orig
 - 목적지: dst, end
 - 현재: cur, curr
 - 이전: prev, prv
 - 다음: next, nxt
 - 결과: ans, res, ret
+- 합계: tot
 - 임시변수: tmp, temp, t
 
 * * *
