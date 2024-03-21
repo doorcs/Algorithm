@@ -1,8 +1,7 @@
-import sys
-input = sys.stdin.readline
+import sys; input = sys.stdin.readline
 
 
-def main():
+def main() -> None:
     pass
 
 
