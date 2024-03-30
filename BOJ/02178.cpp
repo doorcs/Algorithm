@@ -11,8 +11,10 @@ int dy[]{1, 0, -1, 0}; // int dy[] = {1, 0, -1, 0};
 int dx[]{0, 1, 0, -1};
 
 int main() {
+    cin.tie(nullptr)->ios_base::sync_with_stdio(false);
+
     cin >> N >> M;
-    cin.ignore(); // std::cin 사용 후 getline() 사용 전 버퍼 비워주기!
+    cin.ignore(); // std::cin 사용 후 std::getline() 사용 전 버퍼 비워주기!
 
     string str;
     for(int i=0; i<N; i++){
