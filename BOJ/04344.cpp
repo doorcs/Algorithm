@@ -11,10 +11,10 @@ int main() {
         vector<int> vi(N);
         for(int i = 0; i < N; i++) cin >> vi[i];
         double avg = accumulate(vi.begin(), vi.end(), 0.0) / N;
-        int cnt{};
+        double cnt{};
         ranges::for_each(vi, [avg, &cnt](const auto& a){
             if(a > avg) cnt++;
         });
-        cout << fixed << setprecision(3) << double(cnt)/N * 100 << "%\n";
+        cout << fixed << setprecision(3) << cnt/N * 100 << "%\n";
     }
 }
