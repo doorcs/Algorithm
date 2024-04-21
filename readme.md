@@ -17,7 +17,7 @@
 - 이동방향 관련 변수들 (4방향일땐 `1 0 -1 0`, `0 1 0 -1`):
   
   >int dy[] = {1, 1, 1, 0, -1, -1, -1, 0};  
-  >int dx[] = {-1, 0, 1, 1, 1, 0, -1, -1}; == std::ranges::rotate(dy, dy+6); | std::rotate(dy, dy+6, dy+8)   
+  >int dx[] = {-1, 0, 1, 1, 1, 0, -1, -1}; // == std::ranges::rotate(dy, dy+6); | std::rotate(dy, dy+6, dy+8)   
   >for (int i{}; i < 8; i++) { int ny = y + dy[i]; int nx = x + dx[i]; }  
 - 앞, 뒤: fr, rr
 - 중간: mid, middle, center
