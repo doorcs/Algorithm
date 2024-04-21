@@ -28,4 +28,8 @@
 * * *
 
 - 함수로 분리한 코드에서 필요한 변수들은 가급적 전역으로 선언. 초기화가 필요하다면 함수 호출시 `memset`이나 `std::fill`로 초기화
-- vector: v1, v2, ..., vec1, vec2, ...
+> memset(`begin`, `{0 || -1}`, `length`);  
+> memset은 두번째 파라미터를 `unsigned char`형(1바이트)으로 처리!! 더 큰 자료형을 채울땐 extention이 일어나기 때문에 `-1`, `0`에서만 안전  
+> std::fill(`begin`, `end`, `value`);  
+> std::fill() 함수는 범용!
+
