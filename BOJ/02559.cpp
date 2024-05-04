@@ -13,7 +13,7 @@ int main() {
     int fr = 0, rr = K;
     vector<int> res;
     while (rr <= N) {
-        res.push_back(reduce(&vi[fr], &vi[rr])); // std::accumulate (C++17)
+        res.push_back(reduce(&vi[fr], &vi[rr])); // std::accumulate와 비슷하지만 살-짝 다른 std::reduce (C++17)
         fr++, rr++;
     }
     cout << ran::max(res); // std::ranges::max();
