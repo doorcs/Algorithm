@@ -26,6 +26,8 @@
 - 중간: mid, middle, center
 - 출발지: src
 - 목적지: dst
+- 시작: strt
+- 끝: end
 - 현재: cur, curr
 - 이전: prev, prv
 - 다음: next, nxt
