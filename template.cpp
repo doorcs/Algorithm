@@ -5,7 +5,7 @@ using namespace std;
 using ll = long long;
 
 int main() {
-  cin.tie(nullptr)->ios_base::sync_with_stdio(false);
+  ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
   //
 }
