@@ -1,3 +1,4 @@
+// Date: Wed Apr 03 2024 18:19:37 GMT+0900 (Korean Standard Time)
 class Solution {
 public:
     int jump(vector<int>& nums) {
