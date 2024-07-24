@@ -1,3 +1,4 @@
+// Date: Sun Apr 28 2024 23:59:52 GMT+0900 (Korean Standard Time)
 namespace ran = std::ranges;
 
 class Solution {
