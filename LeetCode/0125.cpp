@@ -1,3 +1,4 @@
+// Date: Sat Apr 13 2024 16:28:54 GMT+0900 (Korean Standard Time)
 class Solution {
 public:
     bool isPalindrome(string s) {
