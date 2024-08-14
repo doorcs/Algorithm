@@ -5,7 +5,7 @@
   - `std::cin.tie(nullptr)->ios_base::sync_with_stdio(false);` 처럼 쓰지 말고 분리해서 쓰기
 
       > `ios_base::sync_with_stdio(false);` `cin.tie(nullptr);` `cout.tie(nullptr);`
-  - `for`, `while` 같은 제어문 키워드와 조건식 괄호 사이를 한 칸 띄우기
+  - `for`, `while` 같은 제어문 키워드와 조건식 괄호 사이는 한 칸 띄우기
 
       > `for(;;)` // bad  
       > `for (;;)` // good!
@@ -36,3 +36,5 @@
   
   - bool operator<(const ~~*Classname*~~& other) <ins>***const***</ins> { <!-- 일반적으로 <u></u> 처럼 u 태그 활용을 권장하지만, 깃허브에서는 `ins`태그를 통한 밑줄만 지원 -->
   - `stk.push() == vec.push_back()` | `stk.pop() == vec.pop_back()` | `stk.top() == vec.back()`
+- 2024.08 - 숫자가 조금이라도 커질 것 같으면 long long 자료형 사용하기!!! ( using ll = long long )
+<!-- ll 사용을 생활화하기! -->
