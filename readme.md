@@ -4,18 +4,21 @@
   - 줄바꿈이 필요할 땐 `std::endl` 대신 `'\n'` 쓰기
   - `std::cin.tie(nullptr)->ios_base::sync_with_stdio(false);` 처럼 쓰지 말고 분리해서 쓰기
 
-      > `ios_base::sync_with_stdio(false);` `cin.tie(nullptr);` `cout.tie(nullptr);`
+      > `cin.tie(nullptr);`  
+      > `cout.tie(nullptr);`  
+      > `ios_base::sync_with_stdio(false);` 
   - `for`, `while` 같은 제어문 키워드와 조건식 괄호 사이는 한 칸 띄우기
 
-      > `for(;;)` // bad  
+      > `for(;;)` // bad
+      > <!-- 이럴땐 한 칸만 띄워도 줄바꿈 가능! -->
       > `for (;;)` // good!
   - `if`, `else if`, `else` 구문 정렬하기 - `closing brace on new line, else on same line`
 
       > if (cond) {  
-      > //  
-      > `} else if (cond) {` // good!  
-      > //  
-      > } else { }
+      > 
+      > <ins>`} else if (cond) {` </ins>// good!  
+      > 
+      > } else {}
 </details>
 
 - - -
@@ -36,5 +39,9 @@
   
   - bool operator<(const ~~*Classname*~~& other) <ins>***const***</ins> { <!-- 일반적으로 <u></u> 처럼 u 태그 활용을 권장하지만, 깃허브에서는 `ins`태그를 통한 밑줄만 지원 -->
   - `stk.push() == vec.push_back()` | `stk.pop() == vec.pop_back()` | `stk.top() == vec.back()`
-- 2024.08 - 숫자가 조금이라도 커질 것 같으면 long long 자료형 사용하기!!! ( using ll = long long )
+- 2024.08 - 숫자가 조금이라도 커질 것 같으면 long long 자료형 사용하기!!! *( `using ll = long long;` )*
 <!-- ll 사용을 생활화하기! -->
+- 2024.09 - `std::deque`를 사용할 때, 실제로 reverse 연산을 수행하는 대신 `flag` 쓰기
+  
+  - ~~reverse(dq.begin(), dq.end());~~ // bad
+  - `bool rev = true;` // good!
