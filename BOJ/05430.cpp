@@ -15,7 +15,7 @@ using ll = long long;
 //   ret.push_back(str.substr(fr));
 
 //   return ret;
-// }
+// } // sol 1
 
 int main() {
   cin.tie(nullptr);
@@ -27,8 +27,10 @@ int main() {
     string qry; cin >> qry;
     int cnt; cin >> cnt;
     string arr; cin >> arr;
-    // [37,1] 꼴의 입력을 파싱해서 숫자만 덱에 집어넣어야함! (BAPC 2012 테케 발췌)
+
+    // [37,1] 꼴의 입력을 파싱해서 숫자만 덱에 집어넣어야함! (BAPC 2012 테케 중 발췌)
     deque<int> dq(cnt);
+
     // sol 1: string::substr()로 앞뒤를 한칸씩 자른 다음, split()과 std::stoi() 활용
     // arr = arr.substr(1, arr.size()-2);
     // auto tmp = split(arr, ",");
@@ -57,9 +59,9 @@ int main() {
       }
     }
 
-    if (err) {
+    if (err) { // err == true, 1
       cout << "error" << '\n';
-      continue; // 다음 테케
+      continue; // 다음 테케로
     }
 
     cout << '[';
