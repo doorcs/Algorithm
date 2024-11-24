@@ -1,3 +1,6 @@
+<!-- 241124 - `README.md`보다 `readme.md`가 보기 편하다고 생각했었는데, 일반적인 컨벤션을 따르는 게 좋을 것 같다 -->
+<!-- 241124 - I was thinking `readme.md` looks better than `README.md`, but I'd rather just follow THE standard naming convention -->
+
 <details>
   <summary>언젠가 고쳤던 좋지 않은 습관들 ( toggle )</summary><br>
 
@@ -30,9 +33,9 @@
 
 -->
 
-- 2024.05 - 구글 C++ 스타일가이드를 따르려 노력하되, 의도적으로 무시할 부분들을 정하기 ( 문제 해결에 초점을 맞추기 )
+- 2024.05 - 구글 C++ 스타일가이드를 따르려 노력하되, 의도적으로 무시할 부분들을 정하기 ( 문제 해결이 우선! ) <!-- 알고리즘 코딩 테스트는 논리적 사고력과 문제해결력을 확인하기 위한 것!! -->
   
-  - 네임스페이스를 전부 가져오는 것을 권장하지 않지만, 코드 작성 편의성을 위해 `using namespace std;` 쓰기
+  - `std`네임스페이스를 가져오는 것을 권장하지 않지만, 코드 작성 편의성을 위해 `using namespace std;` 쓰기
   - 여러 문장을 한 줄에 작성하는 것을 권장하지 않지만, `int N; cin >> N;` 정도는 한줄로 작성하기
 - 2024.06 - 전처리문과 다른 코드들 사이를 한 줄 띄우기, indentation을 `4 spaces` 에서 `2 spaces` 로 줄이기
 - 2024.07 - 클래스의 `operator<` 에는 반드시 <ins>***const***</ins> 붙여주기, `std::stack` 대신 `std::vector` 쓰기 ( 더 편하다! )
