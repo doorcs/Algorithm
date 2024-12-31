@@ -8,6 +8,40 @@ int main() {
   cout.tie(nullptr);
   ios_base::sync_with_stdio(false);
 
+
+  string s;
+  cin >> s;
+  for (int i = 0; i < s.size(); i++) {
+    int cnt = 0;
+    for (int j = i; j < s.size() && j < i+4; j++) {
+      if (s[j] == 'X') cnt++;
+      else break;
+    }
+
+    if (cnt&1) {
+      return cout << -1, 0;
+    } else if (cnt == 2) {
+      s[i] = s[i + 1] = 'B';
+    } else if (cnt == 4) {
+      s[i] = s[i + 1] = s[i + 2] = s[i + 3] = 'A';
+    }
+  }
+
+  cout << s;
+}
+
+/* 첫 풀이:
+
+#include <bits/stdc++.h>
+
+using namespace std;
+using ll = long long;
+
+int main() {
+  cin.tie(nullptr);
+  cout.tie(nullptr);
+  ios_base::sync_with_stdio(false);
+
   string s, ans;
   cin >> s;
   if (s == "X") return cout << -1, 0;
@@ -36,6 +70,8 @@ int main() {
 
   cout << ans;
 }
+
+*/
 
 /* 문자열을 하나만 사용하는 다른 풀이: https://www.acmicpc.net/source/84446237
 
