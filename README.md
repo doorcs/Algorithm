@@ -24,8 +24,9 @@
   ```cpp
   fill(iter, iter, val);
   // 이터레이터 두 개를 받아서, [inclusive, exclusive) 영역에 val을 채운다
-  int arr[3];
-  fill(arr[0], arr[0]+3, 999); // arr = {999, 999, 999}
+  
+  int arr[3] = {3, 6, 9}; // 새로 선언할 수 있다면 벡터를 쓰면 되는데, 문제에서 배열이 주어지는 경우가 있다
+  fill(arr, arr+3, 0); // arr = {0, 0, 0}
 
   vector<int> vec(7, 3);
   fill(vec.begin()+2, vec.begin()+5, 6); // vec = {3, 3, 6, 6, 6, 3, 3}
@@ -54,6 +55,17 @@
     return ret;
   } // delimiter로 다양한 형태의 문자열을 사용할 수 있다
   ```
+- 비트마스킹 배열과 `next_permutation()`을 활용한 조합 찾기
+  ```cpp
+  vector<int> num{1, 2, 3, 4, 5, 6, 7, 8, 9}, idx{0, 0, 0, 0, 0, 1, 1, 1, 1}; // 0 먼저 써야함!
+  
+  do {
+    for (int i = 0; i < 9; i++)
+      if (idx[i])
+        cout << num[i] << ' '; // {6, 7, 8, 9}에서 {1, 2, 3, 4}까지의 모든 조합을 `역순`으로
+    cout << '\n';
+  } while (next_permutation(idx.begin(), idx.end()));  
+  ```
 - 범위 기반 for문을 활용한 입출력 처리
   ```cpp
   vector<int> vec1(3);
@@ -79,13 +91,37 @@
   ```
 </details>
 <details>
-  <summary>STL 자료구조 사용법 정리 ( toggle )</summary><br>
+  <summary>STL 컨테이너 사용법 정리 ( toggle )</summary><br>
 
 - 컨테이너 공통:
   - .size() 메서드로 현재 담아두고 있는 요소의 수를 알 수 있음
   - .empty() 메서드로 현재 컨테이너가 비어있는지 알 수 있음
   - 컨테이너 생성 시점에 값들을 모두 알 수 있다면, initializer_list 생성자를 활용할 수 있음
 
+- 문자열 ( `std::string` )
+  ```cpp
+  string str;
+  // cin >> str; // cin을 통한 입력도 가능
+  // cin.ignore() <<- 입력 처리에 cin 객체를 활용했다면, getline() 함수 사용 전에 cin.ignore() 필요
+  getline(cin, str); // getline() 함수를 통해, 공백을 포함한 한 줄 입력을 string에 담을 수 있다
+  // std::getline() 함수는 <string> 헤더에 있다!
+
+  // 자르기 ( Substring )
+  string sub = str.substr(start, count); // start 인덱스로부터 count개를 선택한 substring
+  // str.substr(0, 3); <<- {0번째, 1번째, 2번째} 인덱스, 즉 {첫번째, 두번째, 세번째} 문자를 담아 return
+
+  // 오른쪽 공백 제거 ( Right Trim )
+  str.erase(str.find_last_not_of(" \t\n\r\f\v") + 1);
+  // str.erase(find_last_not_of("0x20 | 0x09 | 0x0a | 0x0d | 0x0c | 0x0b")+1);
+  // find_last_not_of()는 문자열이 모두 공백일 경우 string::npos를 반환하므로 +1을 해주면 0이 되는데,
+  // str.erase(0)은 str.erase(0, string::npos)와 같고, 문자열을 모두 지운다
+    
+  // 왼쪽 공백 제거 ( Left Ttrim )
+  str.erase(0, str.find_first_not_of(" \t\n\r\f\v"));
+  // find_first_not_of()는 문자열이 모두 공백(whitespace character)일 경우 string::npos를 반환하므로
+  // str.erase(0, string::npos)가 호출되어 문자열을 모두 지운다
+  ```
+- 맵 ( `std::map` )
   ```cpp
   map<T, U> mp; // map<T, U> mp{{key1, val1}, {key2, val2}};
   // key-value 매핑에 사용함. 내부적으로 pair<T, U>를 사용하며 key의 `operator<`를 적용해 오름차순으로 정렬함
@@ -94,18 +130,21 @@
   .find(key); // find 메서드를 통해 특정 key의 존재 여부를 확인할 수 있음 - 존재하지 않을 경우 .end() 반환
   // .contains() 메서드가 더 직관적이지만, C++20 feature이므로 find 메서드에 익숙해지기
   ```
+- 해시맵 ( `std::unordered_map` )
   ```cpp
   unordered_map<T, U> mp; // unordered_map<T, U> mp{{key1, val1}, {key2, val2}};
   // map과 비슷하지만 Hashing 방식으로 동작해 요소 접근의 시간복잡도가 O(1)
   // 단, key로 사용할 타입은 반드시 1. hash function, 2. equality check 두가지를 가지고 있어야 함
   // primitive types, string 정도만 key로 사용하는게 좋을 듯 (사용자 정의 객체를 key로 쓰려면 귀찮다)
   ```
+- 셋 ( `std::set` )
   ```cpp
   set<T> s; // set<T> s{val1, val2, val3};
   // 포함 여부를 확인해야 할 때 시간복잡도를 줄일 수 있으며, 원소들의 uniqueness를 보장
   .insert(val); // insert 메서드를 통해 값을 추가하려고 `시도`할 수 있음 - 값이 이미 존재할 경우 무시됨
   .find(val); // find 메서드를 통해 특정 값의 존재 여부를 확인할 수 있음 - 존재하지 않을 경우 .end() 반환
   ```
+- 리스트 ( `std::list` )
   ```cpp
   list<T> li; // list<T> li{val1, val2, val3};
   // [] 연산자를 지원하지 않아, 요소를 다룰 때 iterator를 사용해야 함
@@ -119,6 +158,7 @@
   .erase(pos); // 삭제된 원소 다음 원소를 가리키는 이터레이터를 return함. insert와 함께 사용할 수 있음
   li.insert(li.erase(it), val); // it자리에 원래 있던 원소를 삭제하고, val로 대체함
   ```
+- 벡터, 동적 배열 ( `std::vector` )
   ```cpp
   vector<T> v; // vector<T> v{val1, val2, val3};
   // 동적 배열. 생성자를 호출 시 크기를 지정하지 않으면 기본 size와 capacity는 모두 0
@@ -130,6 +170,7 @@
   vector<int> v(10);
   for (int& it : v) cin >> it; // for (auto& it : v) 도 가능
   ```
+- 덱 ( `std::deque` )
   ```cpp
   deque<T> dq;
   .push_front(val);
@@ -138,12 +179,14 @@
   .pop_back();
   // 뒤집는 연산이 필요할 때, 실제로 순서를 뒤집는 대신 반대로 순회하도록 할 수 있다
   ```
+- 큐 ( `std::queue` )
   ```cpp
   queue<T> q;
   .front();
   .push(val);
   .pop();
   ```
+- 우선순위 큐 ( `std::priority_queue` )
   ```cpp
   priority_queue<T> pq;
   .top(); // .front()가 아니라 .top()이다! top priority!!
@@ -191,7 +234,9 @@
 
   for (int i = 0; i < 4; i++) {
     int ny = y + dy[i], nx = x + dx[i];
-    // 그래프 탐색 처리
+    if (ny >= 0 && nx >= 0 && ny < col && nx < row && !vst[ny][nx) {
+      // 그래프 탐색 처리 (상황에 맞게 DFS, BFS 중 선택)
+    }
   }
   ```
 - 앞, 뒤: `fr`, `rr`
@@ -221,10 +266,10 @@
 
 - 2024.05 - 구글 C++ 스타일가이드를 따르려 노력하되, 의도적으로 무시할 부분들을 정하기 ( 문제 해결이 우선! ) <!-- 알고리즘 코딩 테스트는 논리적 사고력과 문제해결력을 확인하기 위한 것!! -->
   
-  - `std`네임스페이스를 가져오는 것을 권장하지 않지만, 코드 작성 편의성을 위해 `using namespace std;` 쓰기
+  - `std`네임스페이스를 가져오지 않는 것을 권장하지만, 코드 작성 편의성을 위해 `using namespace std;` 쓰기
   - 여러 문장을 한 줄에 작성하는 것을 권장하지 않지만, `int N; cin >> N;` 정도는 한줄로 작성하기
 - 2024.06 - 전처리문과 다른 코드들 사이를 한 줄 띄우기, indentation을 `4 spaces` 에서 `2 spaces` 로 줄이기
-- 2024.07 - 클래스의 `operator<` 에는 반드시 <ins>***const***</ins> 붙여주기, `std::stack` 대신 `std::vector` 쓰기 ( 더 편하다! )
+- 2024.07 - 클래스의 `operator<` 에는 반드시 <ins>***const***</ins> 붙여주기, `std::stack` 대신 `std::vector` 쓰기 ( 더 편하다 )
   
   - bool operator<(const ~~*Classname*~~& other) <ins>***const***</ins> { <!-- 일반적으로 <u></u> 처럼 u 태그 활용을 권장하지만, 깃허브에서는 `ins`태그를 통한 밑줄만 지원 -->
   - `stk.push() == vec.push_back()` | `stk.pop() == vec.pop_back()` | `stk.top() == vec.back()`
